@@ -8,6 +8,8 @@ const desc = document.querySelector('.temperature-description p');
 const locationElem = document.querySelector('.location p')
 const countryElem = document.querySelector('.country p')
 const setting = document.querySelector('#convert')
+const dateElem = document.querySelector('#date')
+const timeElem = document.querySelector('#time')
 const notification = document.querySelector('.notification')
 const dateOptions = {
     weekday: 'long',
@@ -83,10 +85,12 @@ const getWeather = (lat, long) => {
 // Display Weather into Dashboard
 function displayWeather() {
     weatherIcon.innerHTML = `<img src="./image/icons/${weather.iconId}.png"/>`;
-    // tempValue.innerHTML = `${weather.temperature.value}°<span>C</span>`;
+    tempValue.innerHTML = `<span class='number'>${weather.temperature.value}</span><span>&deg;C</span>`;
     desc.innerHTML = weather.description;
     locationElem.innerHTML = `${weather.city}, `;
     countryElem.innerHTML = `${weather.country()}`
+    dateElem.innerHTML = `<p>${weather.date.date}</p>`
+    timeElem.innerHTML = `<p>${weather.date.time}</p>`
 }
 
 // Celcius to Fahrenheit

@@ -32,6 +32,14 @@ body {
     margin-top: 20px;
 }
 
+.container .content .title h2 {
+    font-size: 34px;
+    letter-spacing: 2px;
+    background: -webkit-linear-gradient(315deg, #63a4ff 0%, #83eaf1 74%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .container .content .weather-container {
     display: flex;
     flex-direction: column;
@@ -54,6 +62,7 @@ body {
 
 .container .content .weather-container .location-group .left-side {
     display: flex;
+    cursor: pointer;
 }
 
 .container .content .weather-container .location-group .left-side .loca {
@@ -89,6 +98,7 @@ body {
     font-size: 36px;
     margin-top: 15px;
     text-align: center;
+    cursor: pointer;
 }
 
 .container .content .weather-container .temp-group .temperature-value .number {
@@ -141,4 +151,16 @@ body {
     color: #616161;
     text-transform: uppercase;
     margin-left: 10px;
+}
+
+.container .content .weather-container footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    color: #616161
+}
+
+.container .content .weather-container footer a {
+    color: #616161;
+    cursor: pointer;
 }
