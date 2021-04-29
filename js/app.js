@@ -7,9 +7,18 @@ const tempValue = document.querySelector('.temperature-value p');
 const desc = document.querySelector('.temperature-description p');
 const locationElem = document.querySelector('.location p')
 const countryElem = document.querySelector('.country p')
+const setting = document.querySelector('#convert')
 const notification = document.querySelector('.notification')
-const dateNow = new Date(Date.now()).toLocaleDateString();
+const dateOptions = {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+};
+const dateNow = new Date(Date.now()).toLocaleString('en-US', dateOptions);
 const timeNow = new Date(Date.now()).toLocaleTimeString();
+
+
 
 const weather = {
     temperature: {
@@ -21,7 +30,6 @@ const weather = {
     }
 }
 
-console.log(weather.date)
 
 const Kelvin = 273;
 
@@ -75,7 +83,7 @@ const getWeather = (lat, long) => {
 // Display Weather into Dashboard
 function displayWeather() {
     weatherIcon.innerHTML = `<img src="./image/icons/${weather.iconId}.png"/>`;
-    tempValue.innerHTML = `${weather.temperature.value}°<span>C</span>`;
+    // tempValue.innerHTML = `${weather.temperature.value}°<span>C</span>`;
     desc.innerHTML = weather.description;
     locationElem.innerHTML = `${weather.city}, `;
     countryElem.innerHTML = `${weather.country()}`
@@ -87,18 +95,24 @@ const celToFah = (temp) => {
 }
 
 tempValue.addEventListener('click', () => {
+    convert()
+})
+
+setting.addEventListener('click', () => {
+    convert()
+})
+
+function convert() {
     if (weather.temperature.value === undefined) return;
     if (weather.temperature.unit == 'celsius') {
         let fahrenheit = celToFah(weather.temperature.value);
 
         fahrenheit = Math.floor(fahrenheit);
 
-        tempValue.innerHTML = `${fahrenheit} &deg;<span>F</span>`;
+        tempValue.innerHTML = `<span class='number'>${fahrenheit} </span><span>&deg;F</span>`;
         weather.temperature.unit = 'fahrenheit';
     } else {
-        tempValue.innerHTML = `${weather.temperature.value}°<span> C</span>`;
+        tempValue.innerHTML = `<span class='number'>${weather.temperature.value}</span><span>&deg;C</span>`;
         weather.temperature.unit = 'celsius'
     }
-})
-
-console.log(weather.country)
+}
