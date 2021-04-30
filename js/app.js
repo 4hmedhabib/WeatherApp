@@ -57,7 +57,7 @@ function showError(error) {
 }
 
 const getWeather = (lat, long) => {
-    let api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}`;
+    let api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}`;
 
     fetch(api)
         .then((response) => {
